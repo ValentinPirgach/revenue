@@ -1,2 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.results-block {
+  display: inline-block;
+}
+
+.spinner {
+  i {
+    animation: spin 1s infinite ease;
+    font-size: 3em;
+    margin: 10px 0;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+  }
+}

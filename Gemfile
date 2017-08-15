@@ -38,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise', github: 'plataformatec/devise', ref: '83002017'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'stock_quote'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
