@@ -3,10 +3,10 @@
 
   = form_tag search_stocks_path, remote: true, method: :get, id: 'stock-lookup-form' do
     .form-group.row.no-padding.text-center.col-md-12
-      .col-md-10
+      .col-md-8
         = text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: 'form-control search-box input-lg'
 
-      .col-md-2
+      .col-md-4
         = button_tag(type: :submit, class: 'btn btn-lg btn-success')
           i.glyphicon.glyphicon-search
           | &nbsp;
@@ -28,5 +28,27 @@
       strong
         | Price:
       = @stock.price
+      | &nbsp;
+
+      - if current_user.can_add_stock?(@stock.ticker)
+
+        = link_to "Add to my stocks",
+          user_stocks_path(user: current_user, stock_ticker: @stock.ticker, stock_id: @stock.id ? @stock.id : ''),
+          class: 'btn btn-xs btn-success',
+          method: :post
+
+      - else
+
+        div.label.label-default
+          | Stock cannot be added because you have already added &nbsp;
+
+          - if !current_user.under_stock_limit?
+            span 10 stocks
+
+          - if current_user.stock_already_added?(@stock.ticker)
+            span this stock
+
+
+
 
   #stock-lookup-errors
