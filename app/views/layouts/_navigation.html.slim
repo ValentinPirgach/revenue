@@ -1,0 +1,19 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    = link_to 'Revenue', root_path, class: 'navbar-brand'
+    - if current_user
+      button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      .navbar-collapse.collapse.navbar-responsive-collapse
+        ul.nav.navbar-nav.col-md-6
+          li= link_to "My portfolio", my_portfolio_path
+          li= link_to "My Profile", edit_registration_path(current_user)
+          li= link_to "Link 3", "/path3"
+        ul.nav.navbar-right.col-md-4
+          li.col-md-8.user-name.text-right
+            i.glyphicon.glyphicon-user
+            | &nbsp;
+            = current_user.full_name.present? ? current_user.full_name : current_user.email
+          li.col-md-4.logout = link_to "Logout", destroy_user_session_path, class: 'btn-xs btn-danger', method: :delete
