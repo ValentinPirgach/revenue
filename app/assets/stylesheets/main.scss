@@ -51,8 +51,9 @@
       color: #fff !important;
 
       &-danger {
+
         &:visited {
-          color: #fff;
+          color: #fff !important;
         }
 
         &:hover {
@@ -60,5 +61,12 @@
         }
       }
     }
+  }
+}
+
+
+.btn {
+  &:visited {
+    color: #fff !important;
   }
 }
